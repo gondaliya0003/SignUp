@@ -1,0 +1,13 @@
+.otpstyle{
+  display: inline-flex;
+  justify-content: center;
+   margin-top: 40px;
+ }
+ .otpstyle input{
+     font-weight: normal;
+     margin:1rem;
+     font-size:35px;
+     border: 1px solid rgb(49, 43, 43); 
+     background-origin: padding-box; 
+ 
+   } 
