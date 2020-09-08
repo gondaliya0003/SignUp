@@ -11,7 +11,7 @@ export class contactDetail extends Component {
     constructor(props){
         super(props);
         this.state={
-            btnclick: 0,
+            btnclick: false,
             phone: "",
             otp: '',
             errormsg: "",
@@ -55,7 +55,7 @@ export class contactDetail extends Component {
     otpbtnclick = () => {
          
         console.log("send btn clicked");
-        this.setState({ btnclick: 1 });
+        this.setState({ btnclick: true });
         // logic for first time send otp
     }
 
@@ -94,7 +94,7 @@ export class contactDetail extends Component {
                     <Timer getFromTimer={this.getFromTimer}/>
                 }
                 {
-                    (this.state.btnclick === 1 &&  this.state.okFromServer===200) &&
+                    (this.state.btnclick === true &&  this.state.okFromServer===200) &&
                     <OtpInput
                         containerStyle={styles.otpstyle}
                         value={this.state.otp}
