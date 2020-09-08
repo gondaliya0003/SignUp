@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './signUp.css'
+import Timer from './Timer.js'
 
 import { Modal, Form, Row, Col, Button, InputGroup, FormControl, FormGroup, FormLabel } from 'react-bootstrap';
 
@@ -9,7 +10,6 @@ export class SignUpDetail extends Component {
         username: "",
         pwd: "",
         confirmpwd: "",
-        // cheackboxvalue: 0,
         radiovalue: "merchant",
         nameOfState: null,
         nameOfCity: null,
@@ -23,6 +23,8 @@ export class SignUpDetail extends Component {
         ecommerceFilpkartvalue: true,
         ecommercePaytmvalue: true,
         ecommerceEbayvalue: true,
+        codeFromServer:200,
+        errorCode:400
 
 
 
@@ -32,13 +34,6 @@ export class SignUpDetail extends Component {
 
         e.preventDefault();
         this.setState({ [e.target.name]: e.target.value }, () => { });
-
-
-        // console.log(this.state.nameOfCity);
-        // let {nameOfState} =this.state;
-        // console.log(this.state.nameOfState);
-
-
     }
    
     // testing : this.testing.bind(this);
@@ -175,15 +170,7 @@ export class SignUpDetail extends Component {
             
         }
         else {
-            // if (usernameError == "" || pwdError == "" || confirmpwdError == "") {
-                //   console.log(username);
-                //   console.log(pwd);
-                //   console.log(confirmpwd);
-                //   console.log(radiovalue);
-                
-                // } else {
-                    //   console.log("eroror");
-                    // }
+          
                     
                     console.log("merchant");
                     console.log(this.state.usernameError);
@@ -252,77 +239,6 @@ export class SignUpDetail extends Component {
 
                     <br />
                     
-
-                    {/* 
-
-                    <Form.Row className="m-3" id="dropdown">
-                        {
-                            (() => {
-                                if (radiovalue == "reviewer") {
-                                    return (
-
-                                        <div>
-                                            <Form.Row>
-
-                                                <Col xs={6}  >
-
-                                                    <select className="mdb-select md-form" onChange={this.dropdown} name="nameOfState" searchable="Search here.." >
-                                                        <option disabled selected defaultValue>State</option>
-                                                        <option value="guj">gujarat</option>
-                                                        <option value="raj">rajastan</option>
-                                                        <option value="goa">goa</option>
-                                                    </select>
-                                                </Col>
-
-                                                <Col xs={6}>
-                                                    <select className="mdb-select md-form" onChange={this.dropdown} name="nameOfCity" searchable="Search here..">
-                                                        <option disabled selected>City</option>
-                                                        <option value="surat">surat</option>
-                                                        <option value="ahemdabad">ahemdabad</option>
-                                                        <option value="vododara">vadodra</option>
-
-                                                    </select>
-                                                </Col>
-
-                                            </Form.Row>
-                                            {nameOfCity == null || nameOfState == null ? <FormLabel style={{ color: "red", fontSize: 12, letterSpacing: 1 }}>{selectionError}</FormLabel> : ""}
-
-                                            <br />
-                                            <label htmlFor="defaultInline1">Choose your platform:</label><br />
-                                            <Form.Row className="ml-3 mb-3">
-                                                <div class="custom-control custom-checkbox custom-control-inline">
-                                                    <input type="checkbox" class="custom-control-input" id="defaultInline1" value="Amzon" onChange={this.ecommerceAmzon} />
-                                                    <label class="custom-control-label" for="defaultInline1">Amzon</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox custom-control-inline ">
-                                                    <input type="checkbox" class="custom-control-input" id="defaultInline2" value="Filpkart" onChange={this.ecommerceFilpkart} />
-                                                    <label class="custom-control-label" for="defaultInline2">Filpkart</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox custom-control-inline">
-                                                    <input type="checkbox" class="custom-control-input" id="defaultInline4" value="Paytm" onChange={this.ecommercePaytm} />
-                                                    <label class="custom-control-label" for="defaultInline4">Paytm</label>
-                                                </div>
-
-                                                <div class="custom-control custom-checkbox custom-control-inline">
-                                                    <input type="checkbox" class="custom-control-input" id="defaultInline3" value="Ebay" onChange={this.ecommerceEbay} />
-                                                    <label class="custom-control-label" for="defaultInline3">Ebay</label>
-                                                </div>
-
-                                            </Form.Row>
-                                            {ecommerceArray.length == 0 ? <FormLabel style={{ color: "red", fontSize: 12, letterSpacing: 1 }}>{ecommerceArrayError}</FormLabel> : ""} */}
-
-                    {/* 
-                                        </div>
-
-                                    );
-                                }
-                            })()
-                        }
-                    </Form.Row> */}
-
-
 
                 </FormGroup >
             </Form >

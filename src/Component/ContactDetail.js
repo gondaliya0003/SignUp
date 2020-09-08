@@ -5,15 +5,30 @@ import FormLabel from '@material-ui/core/FormLabel';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css'
 import OtpInput from 'react-otp-input';
-
+import Timer from './Timer.js'
 
 export class contactDetail extends Component {
-    state = {
-        btnclick: 0,
-        phone: "",
-        otp: '',
-        errormsg: ""
+    constructor(props){
+        super(props);
+        this.state={
+            btnclick: 0,
+            phone: "",
+            otp: '',
+            errormsg: "",
+            okFromServer:200,
+            errorCode:400,
+            resendDispaly:null
+        }
     }
+
+
+    getFromTimer=(val)=>{
+        if(val==='true')
+         this.setState({resendDispaly:val})
+        
+        console.log("value from timer:"+val);
+    }
+   
 
     handleChange = (otp) => {
 
@@ -38,16 +53,13 @@ export class contactDetail extends Component {
 
 
     otpbtnclick = () => {
-        if (this.state.btnclick == 1) {
-            this.resendotp();
-        }
+         
+        console.log("send btn clicked");
         this.setState({ btnclick: 1 });
         // logic for first time send otp
     }
-    resendotp = () => {
-        // logic for resend otp
-        console.log("resend");
-    }
+
+   
 
 
     render() {
@@ -65,14 +77,25 @@ export class contactDetail extends Component {
                 />
 
                 <br></br>
+
+
+
+                {this.state.resendDispaly==='true'&&
+
                 <Button variant="contained"
                     style={{ float: 'right ' }}
                     color="primary" onClick={this.otpbtnclick}>
-                    {this.state.btnclick == 1 ? 'resend otp' : 'send otp'}
+                  {this.state.okFromServer===400?'resend':'send'}
                 </Button >
+                }
 
                 {
-                    this.state.btnclick === 1 && <OtpInput
+                    this.state.okFromServer===200 &&
+                    <Timer getFromTimer={this.getFromTimer}/>
+                }
+                {
+                    (this.state.btnclick === 1 &&  this.state.okFromServer===200) &&
+                    <OtpInput
                         containerStyle={styles.otpstyle}
                         value={this.state.otp}
                         onChange={this.handleChange}
@@ -93,6 +116,7 @@ export class contactDetail extends Component {
                 >
                     {this.state.errormsg}
                 </FormLabel>
+
             </div >
         )
     }
